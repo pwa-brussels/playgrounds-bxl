@@ -24,7 +24,7 @@ export function updateCard(data, cards, cardTemplate, container, language) {
       card.classList.remove('cardTemplate');
       card.removeAttribute('hidden');
       container.appendChild(card);
-      cards[data.key] = card;
+      cards[data.recordid] = card;
     }
 
      // Verifies the data provide is newer than what's already visible
