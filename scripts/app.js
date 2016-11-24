@@ -165,7 +165,7 @@ import { updateCard } from './ui.js';
    * request goes through, then the card gets updated a second time with the
    * freshest data.
    */
-  app.getForecast = function(key, label) {
+  app.getForecast = function(recordid, label) {
     getData().then(data => {
       data.records
         .map( record => updateCard(record, app.visibleCards, app.cardTemplate, app.container, 'fr' ));
@@ -220,7 +220,7 @@ import { updateCard } from './ui.js';
   } else {
     updateCard(initialPlayground, app.visibleCards, app.cardTemplate, app.container, 'fr' );
     app.selectedCities = [
-      {key: initialWeatherForecast.recordid, label: initialWeatherForecast.label}
+      {key: initialPlayground.recordid, label: initialPlayground.label}
     ];
     app.saveSelectedCities();
   }
