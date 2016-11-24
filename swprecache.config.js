@@ -1,6 +1,11 @@
 module.exports = {
     "staticFileGlobs": [
         "images/*",
-        "scripts/*"
-    ]
+        "scripts/*",
+        "styles/*"
+    ],
+    "runtimeCaching": [{
+        "urlPattern": /yahooapi/,
+        "handler": "cacheFirst"
+    }]
 }
