@@ -27,7 +27,10 @@ import { getData } from './Data';
     daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
   };
 
-  getData();
+  getData()
+  .then(res => {
+        console.log(res);
+  })
 
 
   /*****************************************************************************

@@ -2,8 +2,8 @@ const API_URL = 'http://opendata.brussels.be/api/records/1.0/search/?dataset=pla
 
 
 export function getData() {
-    fetch(API_URL)
-    .then( response => {
-        console.log(response);
-    });
+    return fetch(API_URL)
+        .then( response => {
+            return response.json();
+        });
 }
