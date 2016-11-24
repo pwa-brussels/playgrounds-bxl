@@ -1,0 +1,32 @@
+{
+  "name": "playgrounds-bxl",
+  "version": "1.0.0",
+  "description": "A mobile web app that demonstrates the features of progressive web apps as defined on https://developer.mozilla.org/en-US/Apps/Progressive",
+  "main": "service-worker.js",
+  "dependencies": {
+    "systemjs": "^0.19.41",
+    "traceur": "0.0.111"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pwa-brussels/playgrounds-bxl.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pwa-brussels/playgrounds-bxl/issues"
+  },
+  "homepage": "https://github.com/pwa-brussels/playgrounds-bxl#readme",
+  "jspm": {
+    "dependencies": {},
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
