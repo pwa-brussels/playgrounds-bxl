@@ -5,7 +5,7 @@ module.exports = {
         "src/*"
     ],
      "runtimeCaching": [{
-             "urlPattern": /opendata.brussels.be/,
+             "urlPattern": /opendata\.brussels\.be/,
              "handler": "cacheFirst"
     }]
 }
