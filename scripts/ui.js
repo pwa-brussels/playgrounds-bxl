@@ -1,5 +1,5 @@
 
-export function updateCard(data, cards, language) {
+export function updateCard(data, cards, cardTemplate, container, language) {
     var dataLastUpdated = new Date(data.record_timestamp);
     var postalCode = data.fields.code_postal;
     var age = data.fields.tranche_d_age;
@@ -8,7 +8,7 @@ export function updateCard(data, cards, language) {
     var description;
     var address;
 
-    if (language = 'fr') {
+    if (language == 'fr') {
         name = data.fields.nom;
         description = data.fields.description;
         address = data.fields.addresse;
@@ -20,10 +20,10 @@ export function updateCard(data, cards, language) {
 
     var card = cards[data.recordid];
     if (!card) {
-      card = app.cardTemplate.cloneNode(true);
+      card = cardTemplate.cloneNode(true);
       card.classList.remove('cardTemplate');
       card.removeAttribute('hidden');
-      app.container.appendChild(card);
+      container.appendChild(card);
       cards[data.key] = card;
     }
 
@@ -46,6 +46,5 @@ export function updateCard(data, cards, language) {
     card.querySelector('.address').textContent = address;
     card.querySelector('.age').textContent = age;
     card.querySelector('.postalCode').textContent = postalCode;
-
 
 }
