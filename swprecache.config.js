@@ -2,10 +2,10 @@ module.exports = {
     "staticFileGlobs": [
         "images/*",
         "scripts/*",
-        "styles/*"
+        "src/*"
     ],
-    "runtimeCaching": [{
-        "urlPattern": /yahooapi/,
-        "handler": "cacheFirst"
+     "runtimeCaching": [{
+             "urlPattern": /opendata.brussels.be/,
+             "handler": "cacheFirst"
     }]
 }
