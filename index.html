@@ -56,13 +56,11 @@
     </div>
   </main>
 
-  <div class="dialog-container">
+  <!--<div class="dialog-container">
     <div class="dialog">
       <div class="dialog-title">Add new playground</div>
       <div class="dialog-body">
         <select id="selectCityToAdd">
-          <!-- Values map to Yahoo Weather API Where On Earth Identifiers (WOEIDs).
-               https://developer.yahoo.com/weather/documentation.html#req -->
           <option value="2357536">Austin, TX</option>
           <option value="2367105">Boston, MA</option>
           <option value="2379574">Chicago, IL</option>
@@ -77,7 +75,7 @@
         <button id="butAddCancel" class="button">Cancel</button>
       </div>
     </div>
-  </div>
+  </div>-->
 
   <div class="loader">
     <svg viewBox="0 0 32 32" width="32" height="32">
@@ -85,12 +83,10 @@
     </svg>
   </div>
 
-  <!--<script src="/node_modules/systemjs/dist/system.js"></script>-->
-
    <script src="jspm_packages/system.js"></script>
   <script src="config.js"></script>
  <script>
-  SystemJS.import('scripts/app.js');
+  SystemJS.import('src/scripts/app.js');
 </script>
 
   <!--<script src="scripts/app.js" async></script>-->
