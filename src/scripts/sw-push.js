@@ -5,8 +5,8 @@ self.addEventListener('push', function(event) {
   const title = 'Push Codelab';
   const options = {
     body: 'Yay it works.',
-    icon: 'images/icon.png',
-    badge: 'images/badge.png'
+    icon: 'src/assets/favicons/android-chrome-192x192.png',
+    badge: 'src/assets/favicons/android-chrome-192x192.png'
   };
 
   event.waitUntil(self.registration.showNotification(title, options));
