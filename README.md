@@ -7,5 +7,7 @@ and user generated content.
 
 ## Installation
 1. Clone this git repository
+1. npm install
+1. jspm install
 1. Launch web server from the root directory
 1. Navigate to index.html
