@@ -1,11 +1,11 @@
 // Copyright 2016 Google Inc.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //      http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -13,6 +13,11 @@
 // limitations under the License.
 import { getData } from './Data';
 import { updateCard } from './ui.js';
+import { initialiseSubs, subscribeUser } from './notifications.js';
+
+
+
+let swRegistration;
 
 (function() {
   'use strict';
@@ -171,9 +176,9 @@ import { updateCard } from './ui.js';
       data.records
         .map( record => updateCard(record, app.visibleCards, app.cardTemplate, app.container, 'fr' ));
       app.isLoading = false;
-      app.spinner.setAttribute('hidden', true);  
+      app.spinner.setAttribute('hidden', true);
     });
-    
+
   };
 
   // Iterate all of the cards and attempt to get the latest forecast data
@@ -226,9 +231,28 @@ import { updateCard } from './ui.js';
     app.saveSelectedCities();
   }
 
-    if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator && 'PushManager' in window) {
     navigator.serviceWorker
              .register('./service-worker.js')
-             .then(function() { console.log('Service Worker Registered'); });
+             .then( (swReg) => {
+              swRegistration = swReg;
+              console.log('Service Worker Registered');
+              initialiseSubs(swRegistration);
+
+            });
   }
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
