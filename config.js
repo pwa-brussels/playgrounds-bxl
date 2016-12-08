@@ -1,5 +1,5 @@
 System.config({
-  baseURL: "/",
+  baseURL: "/playgrounds-bxl/",
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
