@@ -7,5 +7,8 @@ module.exports = {
      "runtimeCaching": [{
              "urlPattern": /opendata\.brussels\.be/,
              "handler": "cacheFirst"
-    }]
+    }],
+    "importScripts": [
+        "src/scripts/sw-push.js"
+    ]
 }
