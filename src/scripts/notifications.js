@@ -1,6 +1,6 @@
 let isSubscribed;
 
-const applicationServerPublicKey = "BBc_VmAfrt0gNPuZCReUvMFA5BjZ2wRGL7mIJln0YZqWtgrAfTzKtTpJ-yCOsp_U3NsMsDMdZdGNqdjVEOiwZFI";
+const applicationServerPublicKey = "BBMukMVSpAWcxwbNlNk9rktQwILUgEcsWD0tSNUIzOJSG7amLAKKwkDgqxrjuwiixbSCRRadNH0wpAXZP_1WUzw";
 
 function urlB64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - base64String.length % 4) % 4);
