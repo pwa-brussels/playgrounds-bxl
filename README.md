@@ -18,3 +18,7 @@ and user generated content.
 1. maybe update service-worker.js: `sw-precache --config swprecache.config.js`
 1. Launch web server from the root directory
 1. Navigate to index.html
+
+## See it in action 
+
+https://pwa-brussels.github.io/playgrounds-bxl/
