@@ -14,7 +14,7 @@
 import { getData } from './Data';
 import { updateCard } from './ui.js';
 import { initialiseSubs, subscribeUser } from './notifications.js';
-
+import * as fcm from './fcm-notifications.js';
 
 
 let swRegistration;
@@ -234,29 +234,18 @@ let swRegistration;
 
   // S E R V I C E   W O R K E R
 
-  if ('serviceWorker' in navigator && 'PushManager' in window) {
-  navigator.serviceWorker
-      .register('./service-worker.js')
-      .then( (swReg) => {
-        swRegistration = swReg;
-        console.log('Service Worker Registered', swReg);
-        
-        // Next setup push notifications
-        initialiseSubs(swRegistration);
-    });
-  }
+  // if ('serviceWorker' in navigator && 'PushManager' in window) {
+  // navigator.serviceWorker
+  //     .register('./service-worker.js')
+  //     .then( (swReg) => {
+  //       swRegistration = swReg;
+  //       console.log('Service Worker Registered', swReg);
+
+  //       // Next setup push notifications
+  //       initialiseSubs(swRegistration);
+  //   });
+  // }
+
+  // S E R V I C E   W O R K E R
+  fcm.connect()
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-

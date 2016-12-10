@@ -1,0 +1,14 @@
+fCBkf-UCfB4:APA91bFWzKbGqNVOTpl_ul8gOtMyeGlDmt-q8bYKgu05MkOJ5ziycf8IOA4f42bQPgoc23VPoxVE7pvDjci1cQ-th6zemggvaEsXzjhHSN8Pbe5wANi_g0ToTeZjZZXYLQKXgFB7BBOA
+
+{"to": "fCBkf-UCfB4:APA91bFWzKbGqNVOTpl_ul8gOtMyeGlDmt-q8bYKgu05MkOJ5ziycf8IOA4f42bQPgoc23VPoxVE7pvDjci1cQ-th6zemggvaEsXzjhHSN8Pbe5wANi_g0ToTeZjZZXYLQKXgFB7BBOA", "notification": {"title": "Hello Simon", "body": "Body", "icon": ""}}
+
+curl -X POST --header "Authorization: key=AIzaSyC9JqpUPXBjsycVlVTBIiWw9kAjh00b7pw" --header "Content-Type: application/json" -d '{"to": "fCBkf-UCfB4:APA91bFWzKbGqNVOTpl_ul8gOtMyeGlDmt-q8bYKgu05MkOJ5ziycf8IOA4f42bQPgoc23VPoxVE7pvDjci1cQ-th6zemggvaEsXzjhHSN8Pbe5wANi_g0ToTeZjZZXYLQKXgFB7BBOA", "notification": {"title": "Hello Simon", "body": "Body", "icon": ""}}' https://fcm.googleapis.com/fcm/send
+
+
+
+
+
+curl -X POST -H "Authorization: key=AIzaSyC9JqpUPXBjsycVlVTBIiWw9kAjh00b7pw" -H "Content-Type: application/json" -d '{  "notification": {"title": "Belgium","body": "5 to 1", "icon": "firebase-icon.png","click_action": "http://localhost:8081"},"to":"cvVkvJzcPsA:APA91bGd70h1zBatzLLm1Zr8AnWHPANsP4wMAHreYDDpbL7Y5MFj5Oas1mnkPkP5_UcK3r4_85U73guVoubs0xGfj6ftaW8pNf-0S5InmZxDskv3gbEnccqyOuH9gBsDYkHhWMDFPJdl"}' "https://fcm.googleapis.com/fcm/send"
+
+
+

@@ -43,5 +43,7 @@
   "background_color": "#e0e0e0",
   "start_url": "/index.html",
   "display": "standalone",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "//": "Taken from https://firebase.google.com/docs/cloud-messaging/js/client",
+  "gcm_sender_id": "103953800507"
 }
