@@ -231,15 +231,19 @@ let swRegistration;
     app.saveSelectedCities();
   }
 
-    if ('serviceWorker' in navigator && 'PushManager' in window) {
-    navigator.serviceWorker
-             .register('./service-worker.js')
-             .then( (swReg) => {
-              swRegistration = swReg;
-              console.log('Service Worker Registered');
-              initialiseSubs(swRegistration);
 
-            });
+  // S E R V I C E   W O R K E R
+
+  if ('serviceWorker' in navigator && 'PushManager' in window) {
+  navigator.serviceWorker
+      .register('./service-worker.js')
+      .then( (swReg) => {
+        swRegistration = swReg;
+        console.log('Service Worker Registered', swReg);
+        
+        // Next setup push notifications
+        initialiseSubs(swRegistration);
+    });
   }
 })();
 
