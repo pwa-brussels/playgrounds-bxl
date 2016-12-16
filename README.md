@@ -26,6 +26,9 @@ and user generated content.
 1. Load page (twice possibly)
 1. Copy endpoint data into Messagin section of site at (1)
 
+## Firebase notifications 
+1. See notes for Curl command (make sure app is not the active tab on your browser)
+
 ## See it in action 
 
 https://pwa-brussels.github.io/playgrounds-bxl/
