@@ -1,2 +1,6 @@
+curl -X POST -H "Authorization: key=AAAA0wbBeXk:APA91bFdA6Nqw23cpsD6qdh9AImHi8mg_EyCxO6Ms8XOzhTB8blqWAa2EM4q1R_LtnaVsG44Dwe9S19l9tIro71L5zC_dBTC2mFoWRjQZ3Vp0QegJzMC_iM3-F1dp5uh7jIR0lLAeW9IEE1deplgOu0AAcAd3Ex4BQ" -H "Content-Type: application/json" -d '{"notification": {"title": "Portugal vs. Denmark","body": "5 to 1","icon": "firebase-icon.png","click_action": "http://localhost:8887"},"to": "cuVDnl1o7Rs:APA91bGwGu4BYf404TQ2fuqHsl-EaPXt3mRaJg050P-g31X5Ifv63iRvjHTpXXzEwTlVPVlamS3LkQPCjKvmLJZUNw0mv4pM7lUYn7ORy91FY4ETpT-5riHh1rmj9cMvioqbdU14Qx0o"}' "https://fcm.googleapis.com/fcm/send"
+
+
+
 
 notifications.js:54 {"endpoint":"https://fcm.googleapis.com/fcm/send/fnl92y5jUTQ:APA91bFLdhEXOO08hyrCg1FL9KrGzf6Vy5NpwA-dDlUoajIHILuH8FrQhMREJqGTTMDWAkkqKzZ4-RyRlIBLKTLz3O_QdE0mxC7jZ6ICePWQ8lIZIdF_lj1En09_m6dyNgxURO53iIhp","keys":{"p256dh":"BIiySovK7JHa6-bOCDrgiTWxb_1BPKxkrL1SynRi1PQtqJcsvZUsekaMP2HjJgxGcwiUfzF1F4xlOzX1Acrv3Fk=","auth":"MOy56lzXsCwCNUnSnWeaGA=="}}

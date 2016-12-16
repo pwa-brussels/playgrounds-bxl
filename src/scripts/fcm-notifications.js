@@ -3,41 +3,41 @@ const messaging = firebase.messaging();
 
 export function connect() {
     messaging.requestPermission()
-    .then(function() {
-    console.log('Notification permission granted.');
-    // Retrieve an Instance ID token for use with FCM.
-    return messaging.getToken();
-    })
-    .then( token => {
-        console.log('token', token);
-    })
-    .catch(function(err) {
-    console.log('Unable to get permission to notify.', err);
-    });
+        .then(function () {
+            console.log('Notification permission granted.');
+            // Retrieve an Instance ID token for use with FCM.
+            let token = messaging.getToken();
+            console.log('token', token);
+        })
+        .catch(function (err) {
+            console.log('Unable to get permission to notify.', err);
+        });
 
 
     // Callback fired if Instance ID token is updated.
-    messaging.onTokenRefresh(function() {
+    messaging.onTokenRefresh(function () {
         messaging.getToken()
-        .then(function(refreshedToken) {
-            console.log('Token refreshed.');
-            // Indicate that the new Instance ID token has not yet been sent to the
-            // app server.
-            // setTokenSentToServer(false);
-            // Send Instance ID token to app server.
-            // sendTokenToServer(refreshedToken);
-            // ...
-        })
-        .catch(function(err) {
-            console.log('Unable to retrieve refreshed token ', err);
-            // showToken('Unable to retrieve refreshed token ', err);
-        });
+            .then(function (refreshedToken) {
+                console.log('Token refreshed.');
+                // Indicate that the new Instance ID token has not yet been sent to the
+                // app server.
+                // setTokenSentToServer(false);
+                // Send Instance ID token to app server.
+                // sendTokenToServer(refreshedToken);
+                // ...
+            })
+            .catch(function (err) {
+                console.log('Unable to retrieve refreshed token ', err);
+                // showToken('Unable to retrieve refreshed token ', err);
+            });
     });
 }
 
 messaging.onMessage(payload => {
-  console.log(payload);
+    // Handles message when app in focus in the browser
+    console.log("Message:", payload);
 });
+
 
 // function checkToken() {
 //   // Get Instance ID token. Initially this makes a network call, once retrieved

@@ -73,14 +73,3 @@ function urlB64ToUint8Array(base64String) {
   }
   return outputArray;
 }
-
-// export function updateBtn() {
-//   if (isSubscribed) {
-//     pushButton.textContent = 'Disable Push Messaging';
-//   } else {
-//     pushButton.textContent = 'Enable Push Messaging';
-//   }
-
-//   pushButton.disabled = false;
-// }
-
