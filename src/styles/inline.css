@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-* {
+/** {
   box-sizing: border-box; }
 
 html, body {
@@ -322,10 +322,23 @@ body {
     background: white; }
   .mdl-button--primary.mdl-button--primary.mdl-button--raised, .mdl-button--primary.mdl-button--primary.mdl-button--fab {
     color: white;
-    background-color: #3f51b5; }
+    background-color: #3f51b5; }*/
 
 
 /* Extra   */
 .debug {
   padding: 15px;
+}
+
+  header img {
+    width: auto;
+    height: 25px;
+    margin-right: 20px;
+  }
+
+.card .card-header {
+  margin: -16px -16px 16px -16px;
+}
+.card .card-header img{
+  width: 100%;
 }
