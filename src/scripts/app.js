@@ -19,7 +19,7 @@ import { initialiseSubs, subscribeUser } from './notifications.js';
 
 let swRegistration;
 
-(function() {
+(function () {
   'use strict';
 
   var app = {
@@ -29,6 +29,7 @@ let swRegistration;
     spinner: document.querySelector('.loader'),
     cardTemplate: document.querySelector('.cardTemplate'),
     container: document.querySelector('.main'),
+    debug: document.querySelector('.debug'),
     addDialog: document.querySelector('.dialog-container'),
     daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
   };
@@ -40,7 +41,7 @@ let swRegistration;
    *
    ****************************************************************************/
 
-  document.getElementById('butRefresh').addEventListener('click', function() {
+  document.getElementById('butRefresh').addEventListener('click', function () {
     // Refresh all of the forecasts
     console.log('butRefresh');
     // app.updateForecasts();
@@ -79,7 +80,7 @@ let swRegistration;
    ****************************************************************************/
 
   // Toggles the visibility of the add new city dialog.
-  app.toggleAddDialog = function(visible) {
+  app.toggleAddDialog = function (visible) {
     if (visible) {
       app.addDialog.classList.add('dialog-container--visible');
     } else {
@@ -89,7 +90,7 @@ let swRegistration;
 
   // Updates a weather card with the latest weather forecast. If the card
   // doesn't already exist, it's cloned from the template.
-  app.updateForecastCard = function(data) {
+  app.updateForecastCard = function (data) {
     var dataLastUpdated = new Date(data.created);
     var sunrise = data.channel.astronomy.sunrise;
     var sunset = data.channel.astronomy.sunset;
@@ -171,10 +172,10 @@ let swRegistration;
    * request goes through, then the card gets updated a second time with the
    * freshest data.
    */
-  app.getForecast = function(recordid, label) {
+  app.getForecast = function (recordid, label) {
     getData().then(data => {
       data.records
-        .map( record => updateCard(record, app.visibleCards, app.cardTemplate, app.container, 'fr' ));
+        .map(record => updateCard(record, app.visibleCards, app.cardTemplate, app.container, 'fr'));
       app.isLoading = false;
       app.spinner.setAttribute('hidden', true);
     });
@@ -182,14 +183,14 @@ let swRegistration;
   };
 
   // Iterate all of the cards and attempt to get the latest forecast data
-  app.updateForecasts = function() {
+  app.updateForecasts = function () {
     var keys = Object.keys(app.visibleCards);
-    keys.forEach(function(key) {
+    keys.forEach(function (key) {
       app.getForecast(key);
     });
   };
 
-  app.saveSelectedCities = function() {
+  app.saveSelectedCities = function () {
     var selectedCities = JSON.stringify(app.selectedCities);
     localStorage.selectedCities = selectedCities;
   };
@@ -200,33 +201,34 @@ let swRegistration;
    * discussion.
    */
   var initialPlayground = {
-    "datasetid":"playgrounds",
-    "recordid":"359be7807d0108e540717123b3ca3920caa451c0",
-    "fields":{
-      "nom":"Jardins de la vallée du Maalbeek",
-      "code_postal":"1000",
-      "description":"3 Jeux sur ressort 1 bascule 1 mur d’escalade 2 combinaisons de grimpe et de glisse",
-      "adres":"Jozef II-straat ingang tegenover nr 108",
-      "naam":"Maalbeekdalhof",
-      "adresse":"Rue Jozef II - entrée face au n°108",
-      "tranche_d_age":"3>12",
-      "beschrijving":"3 veertoestellen 1 wip 1 klimmuur 2 glij-klim-combinatie"
+    "datasetid": "playgrounds",
+    "recordid": "359be7807d0108e540717123b3ca3920caa451c0",
+    "fields": {
+      "nom": "Jardins de la vallée du Maalbeek",
+      "code_postal": "1000",
+      "description": "3 Jeux sur ressort 1 bascule 1 mur d’escalade 2 combinaisons de grimpe et de glisse",
+      "adres": "Jozef II-straat ingang tegenover nr 108",
+      "naam": "Maalbeekdalhof",
+      "adresse": "Rue Jozef II - entrée face au n°108",
+      "tranche_d_age": "3>12",
+      "beschrijving": "3 veertoestellen 1 wip 1 klimmuur 2 glij-klim-combinatie"
     },
-    "record_timestamp":"2015-06-22T12:11:25+00:00"
+    "record_timestamp": "2015-06-22T12:11:25+00:00"
   };
 
-  updateCard(initialPlayground, app.visibleCards, app.cardTemplate, app.container, 'fr' );
+  updateCard(initialPlayground, app.visibleCards, app.cardTemplate, app.container, 'fr');
 
   app.selectedCities = localStorage.selectedCities;
+
   if (app.selectedCities) {
     app.selectedCities = JSON.parse(app.selectedCities);
-    app.selectedCities.forEach(function(city) {
+    app.selectedCities.forEach(function (city) {
       app.getForecast(city.recordid, city.label);
     });
   } else {
-    updateCard(initialPlayground, app.visibleCards, app.cardTemplate, app.container, 'fr' );
+    updateCard(initialPlayground, app.visibleCards, app.cardTemplate, app.container, 'fr');
     app.selectedCities = [
-      {key: initialPlayground.recordid, label: initialPlayground.label}
+      { key: initialPlayground.recordid, label: initialPlayground.label }
     ];
     app.saveSelectedCities();
   }
@@ -235,15 +237,18 @@ let swRegistration;
   // S E R V I C E   W O R K E R
 
   if ('serviceWorker' in navigator && 'PushManager' in window) {
-  navigator.serviceWorker
+    navigator.serviceWorker
       .register('./service-worker.js')
-      .then( (swReg) => {
+      .then((swReg) => {
         swRegistration = swReg;
         console.log('Service Worker Registered', swReg);
-        
-        // Next setup push notifications
-        initialiseSubs(swRegistration);
-    });
+
+        // Setup push notifications
+        initialiseSubs(swRegistration)
+          .then(sub => {
+            app.debug.textContent = JSON.stringify(sub);
+          });
+      });
   }
 })();
 

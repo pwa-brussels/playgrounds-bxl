@@ -1,3 +1,4 @@
+// Appends a card to the container
 
 export function updateCard(data, cards, cardTemplate, container, language) {
     var dataLastUpdated = new Date(data.record_timestamp);

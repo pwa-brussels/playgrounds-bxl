@@ -1,12 +1,12 @@
 let isSubscribed;
 
 // From https://web-push-codelab.appspot.com/
-const applicationServerPublicKey = "BPQyQxDT0qp4Ph8xaZSQvCmJKVHH5K2cX8VlXMHK9u5M-AddMoRM9ukaXwVOULABbBfE2AP6VfgpErdrW3o1ge4";
+const applicationServerPublicKey = "BBMukMVSpAWcxwbNlNk9rktQwILUgEcsWD0tSNUIzOJSG7amLAKKwkDgqxrjuwiixbSCRRadNH0wpAXZP_1WUzw";
 
 export function initialiseSubs(swRegistration) {
   // Set the initial subscription value
   // Check whether the pushManager, which is part of the Service Worker, already has a subscription.
-  swRegistration.pushManager.getSubscription()
+  return swRegistration.pushManager.getSubscription()
     .then(function(subscription) {
       isSubscribed = !(subscription === null);
 
@@ -20,31 +20,33 @@ export function initialiseSubs(swRegistration) {
       // updateSubscriptionOnServer(subscription);
 
       // (Re-)subscribe user
-      subscribeUser(swRegistration);
+      return subscribeUser(swRegistration);
     });
 }
 
 function subscribeUser(swRegistration) {
   const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
-  swRegistration.pushManager.subscribe({
-    userVisibleOnly: true,
-    applicationServerKey: applicationServerKey
-  })
-  .then(function(subscription) {
-    // User has accepted notifications
-    // Browser has connected to push server
-    console.log('User is subscribed:', subscription);
 
-    updateSubscriptionOnServer(subscription);
+  return swRegistration.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: applicationServerKey
+    })
+    .then(function(subscription) {
+      // User has accepted notifications
+      // Browser has connected to push server
+      console.log('User is subscribed:', subscription);
 
-    isSubscribed = true;
+      updateSubscriptionOnServer(subscription);
 
-    // updateBtn();
-  })
-  .catch(function(err) {
-    console.error('Failed to subscribe the user: ', err);
-    // updateBtn();
-  });
+      isSubscribed = true;
+
+      // updateBtn();
+      return subscription;
+    })
+    .catch(function(err) {
+      console.error('Failed to subscribe the user: ', err);
+      // updateBtn();
+    });
 }
 
 function updateSubscriptionOnServer(subscription) {
