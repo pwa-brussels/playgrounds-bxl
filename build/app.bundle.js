@@ -246,7 +246,7 @@ $__System.register('f', [], function (_export) {
     }
 
     function getPaymentDetails(name) {
-        console.log(name);
+        console.log("new build 1", name);
 
         var methodData = [{
             supportedMethods: ["basic-card"],
@@ -280,7 +280,7 @@ $__System.register('f', [], function (_export) {
             console.log(paymentResponse);
             paymentResponse.complete("success");
         })['catch'](function (err) {
-            console.error("Uh oh, something bad happened", err.message);
+            console.error("Uh oh, something bad happened", err);
             // alert("Uh oh, something bad happened", err.message);
         });
     }
