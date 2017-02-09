@@ -1,9 +1,10 @@
+// Appends a card to the container
 
 export function updateCard(data, cards, cardTemplate, container, language) {
     var dataLastUpdated = new Date(data.record_timestamp);
     var postalCode = data.fields.code_postal;
     var age = data.fields.tranche_d_age;
-    
+
     var name;
     var description;
     var address;
@@ -20,24 +21,24 @@ export function updateCard(data, cards, cardTemplate, container, language) {
 
     var card = cards[data.recordid];
     if (!card) {
-      card = cardTemplate.cloneNode(true);
-      card.classList.remove('cardTemplate');
-      card.removeAttribute('hidden');
-      container.appendChild(card);
-      cards[data.recordid] = card;
+        card = cardTemplate.cloneNode(true);
+        card.classList.remove('cardTemplate');
+        card.removeAttribute('hidden');
+        container.appendChild(card);
+        cards[data.recordid] = card;
     }
 
-     // Verifies the data provide is newer than what's already visible
+    // Verifies the data provide is newer than what's already visible
     // on the card, if it's not bail, if it is, continue and update the
     // time saved in the card
     var cardLastUpdatedElem = card.querySelector('.card-last-updated');
     var cardLastUpdated = cardLastUpdatedElem.textContent;
     if (cardLastUpdated) {
-      cardLastUpdated = new Date(cardLastUpdated);
-      // Bail if the card has more recent data then the data
-      if (dataLastUpdated.getTime() < cardLastUpdated.getTime()) {
-        return;
-      }
+        cardLastUpdated = new Date(cardLastUpdated);
+        // Bail if the card has more recent data then the data
+        if (dataLastUpdated.getTime() < cardLastUpdated.getTime()) {
+            return;
+        }
     }
     cardLastUpdatedElem.textContent = data.record_timestamp;
 
@@ -46,5 +47,54 @@ export function updateCard(data, cards, cardTemplate, container, language) {
     card.querySelector('.address').textContent = address;
     card.querySelector('.age').textContent = age;
     card.querySelector('.postalCode').textContent = postalCode;
+    card.querySelector('.pay-button').addEventListener('click', (evt) => {
+        getPaymentDetails(name);
+    });
+}
+
+function getPaymentDetails(name) {
+        console.log(name);
+
+    var methodData = [{
+        supportedMethods: ["basic-card"],
+        data: {
+            supportedNetworks: ["visa", "mastercard"]
+        }
+    }];
+
+    var details = {
+        displayItems: [
+            {
+                label: "Original amount",
+                amount: { currency: "EUR", value: "165.00" },
+            },
+            {
+                label: "Family discount",
+                amount: { currency: "EUR", value: "-40.00" },
+                pending: true // The price is not determined yet
+            }
+        ],
+        total: {
+            label: "Total",
+            amount: { currency: "EUR", value: "125.00" },
+        }
+    }
+
+    var options = {};
+
+    var request = new PaymentRequest(
+        methodData, // required payment method data
+        details,    // required information about transaction
+        options     // optional parameter for things like shipping, etc.
+    );
+
+    request.show().then(function (paymentResponse) {
+        // Process paymentResponse here
+        alert("Success - you got it");
+        paymentResponse.complete("success");
+    }).catch(function (err) {
+        console.error("Uh oh, something bad happened", err.message);
+        // alert("Uh oh, something bad happened", err.message);
+    });
 
 }
