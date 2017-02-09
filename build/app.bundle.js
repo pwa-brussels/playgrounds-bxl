@@ -1,53 +1,43 @@
-!function(e){function r(e,r,o){return 4===arguments.length?t.apply(this,arguments):void n(e,{declarative:!0,deps:r,declare:o})}function t(e,r,t,o){n(e,{declarative:!1,deps:r,executingRequire:t,execute:o})}function n(e,r){r.name=e,e in v||(v[e]=r),r.normalizedDeps=r.deps}function o(e,r){if(r[e.groupIndex]=r[e.groupIndex]||[],-1==g.call(r[e.groupIndex],e)){r[e.groupIndex].push(e);for(var t=0,n=e.normalizedDeps.length;n>t;t++){var a=e.normalizedDeps[t],u=v[a];if(u&&!u.evaluated){var d=e.groupIndex+(u.declarative!=e.declarative);if(void 0===u.groupIndex||u.groupIndex<d){if(void 0!==u.groupIndex&&(r[u.groupIndex].splice(g.call(r[u.groupIndex],u),1),0==r[u.groupIndex].length))throw new TypeError("Mixed dependency cycle detected");u.groupIndex=d}o(u,r)}}}}function a(e){var r=v[e];r.groupIndex=0;var t=[];o(r,t);for(var n=!!r.declarative==t.length%2,a=t.length-1;a>=0;a--){for(var u=t[a],i=0;i<u.length;i++){var s=u[i];n?d(s):l(s)}n=!n}}function u(e){return y[e]||(y[e]={name:e,dependencies:[],exports:{},importers:[]})}function d(r){if(!r.module){var t=r.module=u(r.name),n=r.module.exports,o=r.declare.call(e,function(e,r){if(t.locked=!0,"object"==typeof e)for(var o in e)n[o]=e[o];else n[e]=r;for(var a=0,u=t.importers.length;u>a;a++){var d=t.importers[a];if(!d.locked)for(var i=0;i<d.dependencies.length;++i)d.dependencies[i]===t&&d.setters[i](n)}return t.locked=!1,r},{id:r.name});t.setters=o.setters,t.execute=o.execute;for(var a=0,i=r.normalizedDeps.length;i>a;a++){var l,s=r.normalizedDeps[a],c=v[s],f=y[s];f?l=f.exports:c&&!c.declarative?l=c.esModule:c?(d(c),f=c.module,l=f.exports):l=p(s),f&&f.importers?(f.importers.push(t),t.dependencies.push(f)):t.dependencies.push(null),t.setters[a]&&t.setters[a](l)}}}function i(e){var r,t=v[e];if(t)t.declarative?f(e,[]):t.evaluated||l(t),r=t.module.exports;else if(r=p(e),!r)throw new Error("Unable to load dependency "+e+".");return(!t||t.declarative)&&r&&r.__useDefault?r["default"]:r}function l(r){if(!r.module){var t={},n=r.module={exports:t,id:r.name};if(!r.executingRequire)for(var o=0,a=r.normalizedDeps.length;a>o;o++){var u=r.normalizedDeps[o],d=v[u];d&&l(d)}r.evaluated=!0;var c=r.execute.call(e,function(e){for(var t=0,n=r.deps.length;n>t;t++)if(r.deps[t]==e)return i(r.normalizedDeps[t]);throw new TypeError("Module "+e+" not declared as a dependency.")},t,n);void 0!==typeof c&&(n.exports=c),t=n.exports,t&&t.__esModule?r.esModule=t:r.esModule=s(t)}}function s(r){var t={};if(("object"==typeof r||"function"==typeof r)&&r!==e)if(m)for(var n in r)"default"!==n&&c(t,r,n);else{var o=r&&r.hasOwnProperty;for(var n in r)"default"===n||o&&!r.hasOwnProperty(n)||(t[n]=r[n])}return t["default"]=r,x(t,"__useDefault",{value:!0}),t}function c(e,r,t){try{var n;(n=Object.getOwnPropertyDescriptor(r,t))&&x(e,t,n)}catch(o){return e[t]=r[t],!1}}function f(r,t){var n=v[r];if(n&&!n.evaluated&&n.declarative){t.push(r);for(var o=0,a=n.normalizedDeps.length;a>o;o++){var u=n.normalizedDeps[o];-1==g.call(t,u)&&(v[u]?f(u,t):p(u))}n.evaluated||(n.evaluated=!0,n.module.execute.call(e))}}function p(e){if(I[e])return I[e];if("@node/"==e.substr(0,6))return I[e]=s(D(e.substr(6)));var r=v[e];if(!r)throw"Module "+e+" not present.";return a(e),f(e,[]),v[e]=void 0,r.declarative&&x(r.module.exports,"__esModule",{value:!0}),I[e]=r.declarative?r.module.exports:r.esModule}var v={},g=Array.prototype.indexOf||function(e){for(var r=0,t=this.length;t>r;r++)if(this[r]===e)return r;return-1},m=!0;try{Object.getOwnPropertyDescriptor({a:0},"a")}catch(h){m=!1}var x;!function(){try{Object.defineProperty({},"a",{})&&(x=Object.defineProperty)}catch(e){x=function(e,r,t){try{e[r]=t.value||t.get.call(e)}catch(n){}}}}();var y={},D="undefined"!=typeof System&&System._nodeRequire||"undefined"!=typeof require&&require.resolve&&"undefined"!=typeof process&&require,I={"@empty":{}};return function(e,n,o,a){return function(u){u(function(u){for(var d={_nodeRequire:D,register:r,registerDynamic:t,get:p,set:function(e,r){I[e]=r},newModule:function(e){return e}},i=0;i<n.length;i++)(function(e,r){r&&r.__esModule?I[e]=r:I[e]=s(r)})(n[i],arguments[i]);a(d);var l=p(e[0]);if(e.length>1)for(var i=1;i<e.length;i++)p(e[i]);return o?l["default"]:l})}}}("undefined"!=typeof self?self:global)
+!function(e){function r(e,r,o){return 4===arguments.length?t.apply(this,arguments):void n(e,{declarative:!0,deps:r,declare:o})}function t(e,r,t,o){n(e,{declarative:!1,deps:r,executingRequire:t,execute:o})}function n(e,r){r.name=e,e in v||(v[e]=r),r.normalizedDeps=r.deps}function o(e,r){if(r[e.groupIndex]=r[e.groupIndex]||[],-1==g.call(r[e.groupIndex],e)){r[e.groupIndex].push(e);for(var t=0,n=e.normalizedDeps.length;n>t;t++){var a=e.normalizedDeps[t],u=v[a];if(u&&!u.evaluated){var d=e.groupIndex+(u.declarative!=e.declarative);if(void 0===u.groupIndex||u.groupIndex<d){if(void 0!==u.groupIndex&&(r[u.groupIndex].splice(g.call(r[u.groupIndex],u),1),0==r[u.groupIndex].length))throw new TypeError("Mixed dependency cycle detected");u.groupIndex=d}o(u,r)}}}}function a(e){var r=v[e];r.groupIndex=0;var t=[];o(r,t);for(var n=!!r.declarative==t.length%2,a=t.length-1;a>=0;a--){for(var u=t[a],i=0;i<u.length;i++){var s=u[i];n?d(s):l(s)}n=!n}}function u(e){return y[e]||(y[e]={name:e,dependencies:[],exports:{},importers:[]})}function d(r){if(!r.module){var t=r.module=u(r.name),n=r.module.exports,o=r.declare.call(e,function(e,r){if(t.locked=!0,"object"==typeof e)for(var o in e)n[o]=e[o];else n[e]=r;for(var a=0,u=t.importers.length;u>a;a++){var d=t.importers[a];if(!d.locked)for(var i=0;i<d.dependencies.length;++i)d.dependencies[i]===t&&d.setters[i](n)}return t.locked=!1,r},{id:r.name});t.setters=o.setters,t.execute=o.execute;for(var a=0,i=r.normalizedDeps.length;i>a;a++){var l,s=r.normalizedDeps[a],c=v[s],f=y[s];f?l=f.exports:c&&!c.declarative?l=c.esModule:c?(d(c),f=c.module,l=f.exports):l=p(s),f&&f.importers?(f.importers.push(t),t.dependencies.push(f)):t.dependencies.push(null),t.setters[a]&&t.setters[a](l)}}}function i(e){var r,t=v[e];if(t)t.declarative?f(e,[]):t.evaluated||l(t),r=t.module.exports;else if(r=p(e),!r)throw new Error("Unable to load dependency "+e+".");return(!t||t.declarative)&&r&&r.__useDefault?r["default"]:r}function l(r){if(!r.module){var t={},n=r.module={exports:t,id:r.name};if(!r.executingRequire)for(var o=0,a=r.normalizedDeps.length;a>o;o++){var u=r.normalizedDeps[o],d=v[u];d&&l(d)}r.evaluated=!0;var c=r.execute.call(e,function(e){for(var t=0,n=r.deps.length;n>t;t++)if(r.deps[t]==e)return i(r.normalizedDeps[t]);throw new TypeError("Module "+e+" not declared as a dependency.")},t,n);void 0!==c&&(n.exports=c),t=n.exports,t&&t.__esModule?r.esModule=t:r.esModule=s(t)}}function s(r){var t={};if(("object"==typeof r||"function"==typeof r)&&r!==e)if(m)for(var n in r)"default"!==n&&c(t,r,n);else{var o=r&&r.hasOwnProperty;for(var n in r)"default"===n||o&&!r.hasOwnProperty(n)||(t[n]=r[n])}return t["default"]=r,x(t,"__useDefault",{value:!0}),t}function c(e,r,t){try{var n;(n=Object.getOwnPropertyDescriptor(r,t))&&x(e,t,n)}catch(o){return e[t]=r[t],!1}}function f(r,t){var n=v[r];if(n&&!n.evaluated&&n.declarative){t.push(r);for(var o=0,a=n.normalizedDeps.length;a>o;o++){var u=n.normalizedDeps[o];-1==g.call(t,u)&&(v[u]?f(u,t):p(u))}n.evaluated||(n.evaluated=!0,n.module.execute.call(e))}}function p(e){if(I[e])return I[e];if("@node/"==e.substr(0,6))return I[e]=s(D(e.substr(6)));var r=v[e];if(!r)throw"Module "+e+" not present.";return a(e),f(e,[]),v[e]=void 0,r.declarative&&x(r.module.exports,"__esModule",{value:!0}),I[e]=r.declarative?r.module.exports:r.esModule}var v={},g=Array.prototype.indexOf||function(e){for(var r=0,t=this.length;t>r;r++)if(this[r]===e)return r;return-1},m=!0;try{Object.getOwnPropertyDescriptor({a:0},"a")}catch(h){m=!1}var x;!function(){try{Object.defineProperty({},"a",{})&&(x=Object.defineProperty)}catch(e){x=function(e,r,t){try{e[r]=t.value||t.get.call(e)}catch(n){}}}}();var y={},D="undefined"!=typeof System&&System._nodeRequire||"undefined"!=typeof require&&"undefined"!=typeof require.resolve&&"undefined"!=typeof process&&process.platform&&require,I={"@empty":{}};return function(e,n,o,a){return function(u){u(function(u){for(var d={_nodeRequire:D,register:r,registerDynamic:t,get:p,set:function(e,r){I[e]=r},newModule:function(e){return e}},i=0;i<n.length;i++)(function(e,r){r&&r.__esModule?I[e]=r:I[e]=s(r)})(n[i],arguments[i]);a(d);var l=p(e[0]);if(e.length>1)for(var i=1;i<e.length;i++)p(e[i]);return o?l["default"]:l})}}}("undefined"!=typeof self?self:global)
 
 (["1"], [], false, function($__System) {
 var require = this.require, exports = this.exports, module = this.module;
 $__System.registerDynamic("2", [], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
+  var global = this || self,
       GLOBAL = global;
   // 7.2.1 RequireObjectCoercible(argument)
   module.exports = function (it) {
     if (it == undefined) throw TypeError("Can't call method on  " + it);
     return it;
   };
-  return module.exports;
 });
 $__System.registerDynamic('3', ['2'], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
+  var global = this || self,
       GLOBAL = global;
   /* */
   var defined = $__require('2');
   module.exports = function (it) {
     return Object(defined(it));
   };
-  return module.exports;
 });
 $__System.registerDynamic('4', [], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
+  var global = this || self,
       GLOBAL = global;
   // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
   var global = module.exports = typeof window != 'undefined' && window.Math == Math ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
   if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
-
-  return module.exports;
 });
 $__System.registerDynamic('5', [], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
+  var global = this || self,
       GLOBAL = global;
   /* */
   module.exports = function (it) {
     if (typeof it != 'function') throw TypeError(it + ' is not a function!');
     return it;
   };
-  return module.exports;
 });
 $__System.registerDynamic('6', ['5'], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
+  var global = this || self,
       GLOBAL = global;
   /* */
   var aFunction = $__require('5');
@@ -72,11 +62,9 @@ $__System.registerDynamic('6', ['5'], true, function ($__require, exports, modul
       return fn.apply(that, arguments);
     };
   };
-  return module.exports;
 });
 $__System.registerDynamic('7', ['4', '8', '6'], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
+  var global = this || self,
       GLOBAL = global;
   /* */
   var global = $__require('4'),
@@ -117,11 +105,9 @@ $__System.registerDynamic('7', ['4', '8', '6'], true, function ($__require, expo
   $export.B = 16;
   $export.W = 32;
   module.exports = $export;
-  return module.exports;
 });
 $__System.registerDynamic("9", [], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
+  var global = this || self,
       GLOBAL = global;
   /* */
   module.exports = function (exec) {
@@ -131,11 +117,9 @@ $__System.registerDynamic("9", [], true, function ($__require, exports, module) 
       return true;
     }
   };
-  return module.exports;
 });
 $__System.registerDynamic('a', ['7', '8', '9'], true, function ($__require, exports, module) {
-    var define,
-        global = this || self,
+    var global = this || self,
         GLOBAL = global;
     /* */
     var $export = $__require('7'),
@@ -149,11 +133,9 @@ $__System.registerDynamic('a', ['7', '8', '9'], true, function ($__require, expo
             fn(1);
         }), 'Object', exp);
     };
-    return module.exports;
 });
 $__System.registerDynamic('b', ['3', 'a'], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
+  var global = this || self,
       GLOBAL = global;
   /* */
   var toObject = $__require('3');
@@ -162,34 +144,26 @@ $__System.registerDynamic('b', ['3', 'a'], true, function ($__require, exports, 
       return $keys(toObject(it));
     };
   });
-  return module.exports;
 });
 $__System.registerDynamic('8', [], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
+  var global = this || self,
       GLOBAL = global;
   /* */
   var core = module.exports = { version: '1.2.6' };
   if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-
-  return module.exports;
 });
 $__System.registerDynamic('c', ['b', '8'], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
+  var global = this || self,
       GLOBAL = global;
   /* */
   $__require('b');
   module.exports = $__require('8').Object.keys;
-  return module.exports;
 });
 $__System.registerDynamic("d", ["c"], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
+  var global = this || self,
       GLOBAL = global;
   /* */
   module.exports = { "default": $__require("c"), __esModule: true };
-  return module.exports;
 });
 $__System.register('e', [], function (_export) {
     'use strict';
@@ -207,12 +181,14 @@ $__System.register('e', [], function (_export) {
     return {
         setters: [],
         execute: function () {
-            API_URL = 'http://opendata.brussels.be/api/records/1.0/search/?dataset=playgrounds&refine.code_postal=1000';
+            API_URL = 'https://opendata.brussels.be/api/records/1.0/search/?dataset=playgrounds&refine.code_postal=1000';
         }
     };
 });
 
 $__System.register('f', [], function (_export) {
+    // Appends a card to the container
+
     'use strict';
 
     _export('updateCard', updateCard);
@@ -264,8 +240,52 @@ $__System.register('f', [], function (_export) {
         card.querySelector('.address').textContent = address;
         card.querySelector('.age').textContent = age;
         card.querySelector('.postalCode').textContent = postalCode;
+        card.querySelector('.pay-button').addEventListener('click', function (evt) {
+            getPaymentDetails(name);
+        });
     }
 
+    function getPaymentDetails(name) {
+        console.log(name);
+
+        var methodData = [{
+            supportedMethods: ["basic-card"],
+            data: {
+                supportedNetworks: ["visa", "mastercard"]
+            }
+        }];
+
+        var details = {
+            displayItems: [{
+                label: "Original amount",
+                amount: { currency: "EUR", value: "165.00" }
+            }, {
+                label: "Family discount",
+                amount: { currency: "EUR", value: "-40.00" },
+                pending: true // The price is not determined yet
+            }],
+            total: {
+                label: "Total",
+                amount: { currency: "EUR", value: "125.00" }
+            }
+        };
+
+        var options = {};
+
+        var request = new PaymentRequest(methodData, // required payment method data
+        details, // required information about transaction
+        options // optional parameter for things like shipping, etc.
+        );
+
+        request.show().then(function (paymentResponse) {
+            // Process paymentResponse here
+            alert("Success - you got it");
+            paymentResponse.complete("success");
+        })['catch'](function (err) {
+            console.error("Uh oh, something bad happened", err.message);
+            // alert("Uh oh, something bad happened", err.message);
+        });
+    }
     return {
         setters: [],
         execute: function () {}
@@ -279,9 +299,58 @@ $__System.register('10', [], function (_export) {
 
   _export('initialiseSubs', initialiseSubs);
 
-  _export('updateBtn', updateBtn);
+  function initialiseSubs(swRegistration) {
+    // Set the initial subscription value
+    // Check whether the pushManager, which is part of the Service Worker, already has a subscription.
+    return swRegistration.pushManager.getSubscription().then(function (subscription) {
+      isSubscribed = !(subscription === null);
 
-  _export('subscribeUser', subscribeUser);
+      if (isSubscribed) {
+        console.log('User IS already subscribed.');
+      } else {
+        console.log('User is NOT subscribed.');
+      }
+
+      // Commenting out next function call as it currently does nothing
+      // updateSubscriptionOnServer(subscription);
+
+      // (Re-)subscribe user
+      return subscribeUser(swRegistration);
+    });
+  }
+
+  function subscribeUser(swRegistration) {
+    var applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
+
+    return swRegistration.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: applicationServerKey
+    }).then(function (subscription) {
+      // User has accepted notifications
+      // Browser has connected to push server
+      console.log('User is subscribed:', subscription);
+
+      updateSubscriptionOnServer(subscription);
+
+      isSubscribed = true;
+
+      // updateBtn();
+      return subscription;
+    })['catch'](function (err) {
+      console.error('Failed to subscribe the user: ', err);
+      // updateBtn();
+    });
+  }
+
+  function updateSubscriptionOnServer(subscription) {
+    // TODO: Send subscription to our App's server
+    if (subscription) {
+      // console.log("Existing subscription")
+      console.log(JSON.stringify(subscription));
+    } else {
+      console.log("No existing subscription");
+    }
+  }
 
   function urlB64ToUint8Array(base64String) {
     var padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -296,62 +365,21 @@ $__System.register('10', [], function (_export) {
     return outputArray;
   }
 
-  function initialiseSubs(swRegistration) {
-    // Set the initial subscription value
-    swRegistration.pushManager.getSubscription().then(function (subscription) {
-      isSubscribed = !(subscription === null);
+  // export function updateBtn() {
+  //   if (isSubscribed) {
+  //     pushButton.textContent = 'Disable Push Messaging';
+  //   } else {
+  //     pushButton.textContent = 'Enable Push Messaging';
+  //   }
 
-      if (isSubscribed) {
-        console.log('User IS subscribed.');
-      } else {
-        console.log('User is NOT subscribed.');
-      }
-
-      updateSubscriptionOnServer(subscription);
-      subscribeUser(swRegistration);
-      // updateBtn();
-    });
-  }
-
-  function updateBtn() {
-    if (isSubscribed) {
-      pushButton.textContent = 'Disable Push Messaging';
-    } else {
-      pushButton.textContent = 'Enable Push Messaging';
-    }
-
-    pushButton.disabled = false;
-  }
-
-  function subscribeUser(swRegistration) {
-    var applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
-    swRegistration.pushManager.subscribe({
-      userVisibleOnly: true,
-      applicationServerKey: applicationServerKey
-    }).then(function (subscription) {
-      console.log('User is subscribed:', subscription);
-
-      updateSubscriptionOnServer(subscription);
-
-      isSubscribed = true;
-
-      // updateBtn();
-    })['catch'](function (err) {
-      console.log('Failed to subscribe the user: ', err);
-      // updateBtn();
-    });
-  }
-
-  function updateSubscriptionOnServer(subscription) {
-    // TODO: Send subscription to application server
-    if (subscription) {
-      console.log(JSON.stringify(subscription));
-    } else {}
-  }
+  //   pushButton.disabled = false;
+  // }
   return {
     setters: [],
     execute: function () {
       isSubscribed = undefined;
+
+      // From https://web-push-codelab.appspot.com/
       applicationServerPublicKey = "BBMukMVSpAWcxwbNlNk9rktQwILUgEcsWD0tSNUIzOJSG7amLAKKwkDgqxrjuwiixbSCRRadNH0wpAXZP_1WUzw";
     }
   };
@@ -399,6 +427,7 @@ $__System.register('1', ['10', 'd', 'e', 'f'], function (_export) {
           spinner: document.querySelector('.loader'),
           cardTemplate: document.querySelector('.cardTemplate'),
           container: document.querySelector('.main'),
+          debug: document.querySelector('.debug'),
           addDialog: document.querySelector('.dialog-container'),
           daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
         };
@@ -414,31 +443,6 @@ $__System.register('1', ['10', 'd', 'e', 'f'], function (_export) {
           console.log('butRefresh');
           // app.updateForecasts();
         });
-
-        // document.getElementById('butAdd').addEventListener('click', function() {
-        //   // Open/show the add new city dialog
-        //   app.toggleAddDialog(true);
-        // });
-
-        // document.getElementById('butAddCity').addEventListener('click', function() {
-        //   // Add the newly selected city
-        //   var select = document.getElementById('selectCityToAdd');
-        //   var selected = select.options[select.selectedIndex];
-        //   var key = selected.value;
-        //   var label = selected.textContent;
-        //   if (!app.selectedCities) {
-        //     app.selectedCities = [];
-        //   }
-        //   app.getForecast(key, label);
-        //   app.selectedCities.push({key: key, label: label});
-        //   app.saveSelectedCities();
-        //   app.toggleAddDialog(false);
-        // });
-
-        // document.getElementById('butAddCancel').addEventListener('click', function() {
-        //   // Close the add new city dialog
-        //   app.toggleAddDialog(false);
-        // });
 
         /*****************************************************************************
          *
@@ -579,6 +583,7 @@ $__System.register('1', ['10', 'd', 'e', 'f'], function (_export) {
         updateCard(initialPlayground, app.visibleCards, app.cardTemplate, app.container, 'fr');
 
         app.selectedCities = localStorage.selectedCities;
+
         if (app.selectedCities) {
           app.selectedCities = JSON.parse(app.selectedCities);
           app.selectedCities.forEach(function (city) {
@@ -590,13 +595,22 @@ $__System.register('1', ['10', 'd', 'e', 'f'], function (_export) {
           app.saveSelectedCities();
         }
 
-        if ('serviceWorker' in navigator && 'PushManager' in window) {
-          navigator.serviceWorker.register('./service-worker.js').then(function (swReg) {
-            swRegistration = swReg;
-            console.log('Service Worker Registered');
-            initialiseSubs(swRegistration);
-          });
-        }
+        // S E R V I C E   W O R K E R
+
+        // if ('serviceWorker' in navigator && 'PushManager' in window) {
+        //   navigator.serviceWorker
+        //     .register('./service-worker.js')
+        //     .then((swReg) => {
+        //       swRegistration = swReg;
+        //       console.log('Service Worker Registered', swReg);
+
+        //       // Setup push notifications
+        //       initialiseSubs(swRegistration)
+        //         .then(sub => {
+        //           app.debug.textContent = JSON.stringify(sub);
+        //         });
+        //     });
+        // }
       })();
     }
   };
