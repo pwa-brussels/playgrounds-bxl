@@ -258,15 +258,11 @@ $__System.register('f', [], function (_export) {
         var details = {
             displayItems: [{
                 label: "Original amount",
-                amount: { currency: "EUR", value: "165.00" }
-            }, {
-                label: "Family discount",
-                amount: { currency: "EUR", value: "-40.00" },
-                pending: true // The price is not determined yet
+                amount: { currency: "EUR", value: ".01" }
             }],
             total: {
                 label: "Total",
-                amount: { currency: "EUR", value: "125.00" }
+                amount: { currency: "EUR", value: "0.01" }
             }
         };
 
@@ -279,7 +275,9 @@ $__System.register('f', [], function (_export) {
 
         request.show().then(function (paymentResponse) {
             // Process paymentResponse here
-            alert("Success - you got it");
+
+            // console.log(JSON.stringify(paymentResponse));
+            console.log(paymentResponse);
             paymentResponse.complete("success");
         })['catch'](function (err) {
             console.error("Uh oh, something bad happened", err.message);
