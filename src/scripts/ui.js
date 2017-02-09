@@ -85,7 +85,9 @@ function getPaymentDetails(name) {
 
     request.show().then(function (paymentResponse) {
         // Process paymentResponse here
-        alert("Success - you got it");
+
+        // console.log(JSON.stringify(paymentResponse));
+        console.log(paymentResponse);
         paymentResponse.complete("success");
     }).catch(function (err) {
         console.error("Uh oh, something bad happened", err.message);
