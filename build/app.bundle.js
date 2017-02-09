@@ -258,7 +258,7 @@ $__System.register('f', [], function (_export) {
         var details = {
             displayItems: [{
                 label: "Original amount",
-                amount: { currency: "EUR", value: ".01" }
+                amount: { currency: "EUR", value: "0.01" }
             }],
             total: {
                 label: "Total",

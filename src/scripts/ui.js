@@ -66,7 +66,7 @@ function getPaymentDetails(name) {
         displayItems: [
             {
                 label: "Original amount",
-                amount: { currency: "EUR", value: ".01" },
+                amount: { currency: "EUR", value: "0.01" },
             }
         ],
         total: {
