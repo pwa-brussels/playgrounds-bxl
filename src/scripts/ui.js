@@ -53,7 +53,7 @@ export function updateCard(data, cards, cardTemplate, container, language) {
 }
 
 function getPaymentDetails(name) {
-        console.log("new build 1", name);
+        console.log("new build 2", name);
 
     var methodData = [{
         supportedMethods: ["basic-card"],

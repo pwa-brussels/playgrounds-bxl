@@ -246,7 +246,7 @@ $__System.register('f', [], function (_export) {
     }
 
     function getPaymentDetails(name) {
-        console.log("new build 1", name);
+        console.log("new build 2", name);
 
         var methodData = [{
             supportedMethods: ["basic-card"],
