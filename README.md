@@ -19,6 +19,13 @@ and user generated content.
 1. Launch web server from the root directory
 1. Navigate to index.html
 
+## Setting up notifications
+
+1. Head over to https://web-push-codelab.appspot.com/
+1. Copy the public key into notifications.js
+1. Load page (twice possibly)
+1. Copy endpoint data into Messagin section of site at (1)
+
 ## See it in action 
 
 https://pwa-brussels.github.io/playgrounds-bxl/
