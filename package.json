@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "A mobile web app that demonstrates the features of progressive web apps as defined on https://developer.mozilla.org/en-US/Apps/Progressive",
   "homepage": "https://github.com/pwa-brussels/playgrounds-bxl#readme",
-  "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development webpack --progress --hide-modules --config=webpack.config.js",
     "watch": "NODE_ENV=development webpack --watch --progress --hide-modules --config=webpack.config.js",

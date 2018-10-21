@@ -16,7 +16,6 @@ import { updateCard } from './ui.js';
 import { initialiseSubs, subscribeUser } from './notifications.js';
 
 
-
 let swRegistration;
 
 (function () {
@@ -207,7 +206,6 @@ let swRegistration;
     ];
     app.saveSelectedCities();
   }
-
 
   // S E R V I C E   W O R K E R
 
