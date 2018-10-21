@@ -2,34 +2,43 @@
   "name": "playgrounds-bxl",
   "version": "1.0.0",
   "description": "A mobile web app that demonstrates the features of progressive web apps as defined on https://developer.mozilla.org/en-US/Apps/Progressive",
-  "main": "service-worker.js",
-  "dependencies": {
-    "systemjs": "^0.19.41",
-    "traceur": "0.0.111"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-jspm": "^0.5.13"
-  },
+  "homepage": "https://github.com/pwa-brussels/playgrounds-bxl#readme",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "NODE_ENV=development webpack --progress --hide-modules --config=webpack.config.js",
+    "watch": "NODE_ENV=development webpack --watch --progress --hide-modules --config=webpack.config.js",
+    "build": "NODE_ENV=production webpack --no-progress --hide-modules --config=webpack.config.js"
+  },
+  "engines": {
+    "node": ">=9.0",
+    "npm": ">=5"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-runtime": "^6.23.0",
+    "css-loader": "^0.28.11",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.13.0",
+    "mini-css-extract-plugin": "^0.4.1",
+    "node-sass": "^4.9.2",
+    "optimize-css-assets-webpack-plugin": "^4.0.3",
+    "sass-loader": "^7.0.3",
+    "sw-precache-webpack-plugin": "^0.11.5",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.2"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pwa-brussels/playgrounds-bxl.git"
   },
-  "author": "",
+  "author": "PWA Brussels",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/pwa-brussels/playgrounds-bxl/issues"
-  },
-  "homepage": "https://github.com/pwa-brussels/playgrounds-bxl#readme",
-  "jspm": {
-    "dependencies": {},
-    "devDependencies": {
-      "babel": "npm:babel-core@^5.8.24",
-      "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4"
-    }
   }
 }

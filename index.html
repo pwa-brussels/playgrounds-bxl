@@ -16,10 +16,11 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="canonical" href="https://playgrounds-bxl.be">
+  <link rel="canonical" href="https://pwa-brussels.github.io/playgrounds-bxl/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Playgrounds in Brussels</title>
   <link rel="stylesheet" type="text/css" href="src/styles/inline.css">
@@ -31,8 +32,9 @@
   <link rel="icon" type="image/png" href="/src/assets/favicons/favicon-16x16.png" sizes="16x16">
   <link rel="mask-icon" href="/src/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="theme-color" content="#ffffff">
-
+  <script src="https://storage.googleapis.com/prshim/v1/payment-shim.js"></script>
 </head>
+
 <body>
 
   <header class="header">
@@ -42,7 +44,10 @@
     <button id="butAdd" class="headerButton" aria-label="Add"></button>
   </header>
 
+
   <main class="main">
+    <div class="debug"></div>
+
     <div class="card cardTemplate playground" hidden>
       <div class="card-header">
         <img src="src/assets/park.jpg" alt="">
@@ -55,6 +60,7 @@
       <div class="address"></div>
       <div class="age"></div>
       <div class="postalCode"></div>
+      <button class="pay-button">Buy</div>
     </div>
   </main>
 
@@ -64,13 +70,6 @@
     </svg>
   </div>
 
-   <script src="jspm_packages/system.js"></script>
-  <script src="config.js"></script>
- <script>
-  SystemJS.import('src/scripts/app.js');
-</script>
-
-  <!--<script src="scripts/app.js" async></script>-->
-
+  <script src="./dist/main.js"></script>
 </body>
 </html>
